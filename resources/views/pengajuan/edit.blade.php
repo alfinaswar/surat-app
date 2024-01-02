@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <header class="page-header">
 {{-- <body onload="window.print()"> --}}
         <div class="right-wrapper text-left">
@@ -346,8 +348,10 @@
 
             <br><br>
             <div>
-                
-                
+               <select name="status" class="form-control block">
+                <option value="2"> Setujui</option>
+            <option value="3">Tolak Surat</option></select> 
+                <br>
                 <button type="submit" class="btn btn-primary btn-md btn-block">Submit</button>
                 
                 {{-- <a href="{{ route('pengajuan.tolaksurat',$pengajuan->id) }}" class="btn btn-danger btn-md btn-block">Tolak Surat</a> --}}
@@ -356,3 +360,4 @@
         </div>
         </form>
 </body>
+@endsection

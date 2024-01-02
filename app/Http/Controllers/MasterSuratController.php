@@ -56,7 +56,7 @@ class MasterSuratController extends Controller
             'status' => '1',
         ]);
         return redirect()->route('pengajuan.index')
-            ->with('success', 'User created successfully');
+            ->with('success', 'data created successfully');
     }
 
     /**
@@ -76,7 +76,7 @@ class MasterSuratController extends Controller
         $pengajuan = MasterSurat::findOrFail($id);
 
         //render view with post
-       return view('pengajuan.show', compact('pengajuan'));
+       return view('pengajuan.edit', compact('pengajuan'));
     }
 
     /**
@@ -86,17 +86,10 @@ class MasterSuratController extends Controller
     {
         $MasterSurat = MasterSurat::find($id);
         $MasterSurat->ttd1 = "1";
-        $MasterSurat->status = $request->status_surat; //terima
-        // dd($MasterSurat->status = $request->status_surat);
+        $MasterSurat->status = $request->status; //terima
+        // dd($MasterSurat->status = $request->status);
         $MasterSurat->Update();
-        return redirect()->route('pengajuan.index')->with('success', 'Customer updated succesfully');
-    }
-    public function tolaksurat(Request $request, $id)
-    {
-        $MasterSurat = MasterSurat::find($id);
-        $MasterSurat->status = "3"; //tolak
-        $MasterSurat->save();
-        return redirect()->route('pengajuan.index')->with('success', 'Customer updated succesfully');
+        return redirect()->route('pengajuan.index')->with('success', 'data updated succesfully');
     }
 
 
